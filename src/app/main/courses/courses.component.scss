@@ -1,0 +1,39 @@
+.example-card {
+    max-width: 400px;
+}
+
+.example-header-image {
+    background-image: url('http://it-home.am/images/logo_it_home.png');
+    background-size: cover;
+}
+
+.cards {
+    display: flex;
+    align-items: stretch;
+}
+.example-card {
+    margin: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+}
+.example-card img {
+    max-width: 100%;
+}
+.example-card .text {
+    padding: 0 20px 20px;
+}
+.example-card .text > button {
+    background: gray;
+    border: 0;
+    color: white;
+    padding: 10px;
+    width: 100%;
+}
+
+#course{
+    display: flex;
+    margin: auto 10px;
+    padding: 10px;
+    float: left;
+    flex-direction: row;
+}
