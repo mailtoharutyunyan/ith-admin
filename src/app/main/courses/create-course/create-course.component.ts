@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CoursesService } from '../service/courses.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-create-course',
@@ -12,11 +15,19 @@ export class CreateCourseComponent implements OnInit {
     uploadedFilePath: string = null;
     imgURL: string;
     receivedImageData: File;
+    courseForm: FormGroup;
 
-    constructor() {
+    constructor(private _formBuilder: FormBuilder,
+                private coursesService: CoursesService,
+                private router: Router) {
     }
 
     ngOnInit(): void {
+        this.courseForm = this._formBuilder.group({
+            courseName: ['', Validators.required],
+            courseDesc1: ['', Validators.required],
+            courseDesc2: ['', Validators.required]
+        });
     }
 
     fileProgress(fileInput: any): any {
@@ -48,13 +59,38 @@ export class CreateCourseComponent implements OnInit {
         //         this.uploadedFilePath = res.data.filePath;
         //         alert('SUCCESS !!');
         //     });
+        console.log(this.fileData.name);
+        console.log(this.courseForm.get('courseName').value);
+        console.log(this.courseForm.get('courseDesc1').value);
+        console.log(this.courseForm.get('courseDesc2').value);
+
+        /* this.coursesService.createCourse(new Course(
+             this.fileData.name,
+             this.courseForm.get('courseName').value,
+             this.courseForm.get('courseDesc1').value,
+             this.courseForm.get('courseDesc2').value,
+         ));*/
+        if (this.fileData.name) {
+            this.coursesService.createCourse(
+                this.courseForm.get('courseName').value,
+                this.fileData.name,
+                this.courseForm.get('courseDesc1').value,
+                this.courseForm.get('courseDesc2').value,
+            ).subscribe(res => {
+                console.log(res);
+            });
+
+            this.router.navigate(['/courses']);
+
+        }
+
     }
 
     onUpload($event: Event): void {
         console.log('Uploaded');
     }
 
-    onFileChanged($event: Event) {
+    onFileChanged($event: Event): void {
 
     }
 }

@@ -2,33 +2,41 @@
 
     <div class="text">Create Course Section</div>
 
+    <form name="loginForm" [formGroup]="courseForm" novalidate (ngSubmit)="onSubmit()">
 
-    <mat-form-field>
-        <input matInput placeholder="Course Name">
-    </mat-form-field>
 
-    <mat-form-field>
-        <textarea matInput placeholder="Course First Description"></textarea>
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="courseName" placeholder="Course Name">
+        </mat-form-field>
 
-    <mat-form-field>
-        <textarea matInput placeholder="Course First Description"></textarea>
-    </mat-form-field>
-    <div class="button">
-        <button type="file" mat-flat-button color="primary" (click)="fileInput.click()">Choose File</button>
-        <input hidden (change)="fileProgress($event)" #fileInput type="file" id="file" name="image">
+        <mat-form-field>
+            <textarea matInput formControlName="courseDesc1" placeholder="Course First Description"></textarea>
+        </mat-form-field>
 
-        <div *ngIf="fileUploadProgress">
-            Upload progress: {{ fileUploadProgress }}
+        <mat-form-field>
+            <textarea matInput formControlName="courseDesc2" placeholder="Course Second Description"></textarea>
+        </mat-form-field>
+        <div class="button">
+            <button type="file" mat-flat-button color="primary" (click)="fileInput.click()">Choose File</button>
+            <input hidden (change)="fileProgress($event)" #fileInput type="file" id="file" name="image">
+
+            <div *ngIf="fileUploadProgress">
+                Upload progress: {{ fileUploadProgress }}
+            </div>
+
+            <div class="image-preview mt-3" *ngIf="previewUrl">
+                <img [src]="previewUrl" height="300" alt="No Image provided"/>
+            </div>
+
+            <div class="mb-3" *ngIf="uploadedFilePath">
+                {{uploadedFilePath}}
+            </div>
+
+            <button mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN COURSE"
+                    [disabled]="courseForm.invalid">
+                CREATE AN COURSE
+            </button>
+
         </div>
-
-        <div class="image-preview mt-3" *ngIf="previewUrl">
-            <img [src]="previewUrl" height="300" alt="No Image provided"/>
-        </div>
-
-        <div class="mb-3" *ngIf="uploadedFilePath">
-            {{uploadedFilePath}}
-        </div>
-
-    </div>
+    </form>
 </div>

@@ -1,0 +1,16 @@
+.container {
+    min-width: 600px;
+    min-height: auto;
+
+    .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

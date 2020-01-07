@@ -9,9 +9,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FuseSharedModule } from '../../../@fuse/shared.module';
-import { MatCardModule, MatSelectModule } from '@angular/material';
+import { MatCardModule, MatDialog, MatDialogModule, MatDialogRef, MatSelectModule } from '@angular/material';
 import { AuthGuard } from '../auth/helpers/auth-guard';
 import { CreateCourseComponent } from './create-course/create-course.component';
+import { DialogViewComponent } from './dialog/dialog-view/dialog-view.component';
 
 
 const routes = [
@@ -29,7 +30,8 @@ const routes = [
 ];
 
 @NgModule({
-    declarations: [CoursesComponent, CreateCourseComponent],
+    declarations: [CoursesComponent, CreateCourseComponent, DialogViewComponent],
+
     imports: [
         RouterModule.forChild(routes),
         CommonModule,
@@ -41,7 +43,11 @@ const routes = [
 
         FuseSharedModule,
         MatCardModule,
-        MatSelectModule
+        MatSelectModule,
+        MatDialogModule,
+
+    ], entryComponents: [
+        DialogViewComponent
     ]
 })
 export class CoursesModule {
