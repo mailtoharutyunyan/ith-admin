@@ -14,6 +14,7 @@ const routes = [
     {
         path: 'auth/register',
         component: RegisterComponent
+
     }
 ];
 

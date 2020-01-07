@@ -1,67 +1,17 @@
-<div id="course" fxLayout="column">
-
-    <div id="cards" fxLayout="column" fxLayoutAlign="center center">
-        <div class="cards">
-            <mat-card class="example-card">
+<div id="courses" fxLayout="column">
+    <div id="course" class="flex-container" fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <div *ngFor="let course of courses" class="course">
+            <mat-card class="example-card ">
                 <mat-card-header>
+                    <div>{{course.courseId}} </div>
                     <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title>Java</mat-card-title>
-                    <mat-card-subtitle>Welcome to Java Course</mat-card-subtitle>
+                    <mat-card-title>{{course.courseName}}</mat-card-title>
+                    <mat-card-subtitle>{{course.courseFirstDescription}}</mat-card-subtitle>
                 </mat-card-header>
-                <img mat-card-image
-                     src="https://media-market.edmodo.com/media/public/e0dd66f726194a1feb7350ae91e011d7ec811599.png"
+                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
                      alt="Photo of a Shiba Inu">
                 <mat-card-content>
-                    <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
-                    </p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-button>LIKE</button>
-                    <button mat-button>SHARE</button>
-                </mat-card-actions>
-            </mat-card>
-
-            <!--Card 2-->
-            <mat-card class="example-card">
-                <mat-card-header>
-                    <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title>Kotlin</mat-card-title>
-                    <mat-card-subtitle>Welcome to Kotlin Course</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image
-                     src="http://www.9minecraft.net/wp-content/uploads/2019/12/Fabric-Language-Kotlin-Mod.png"
-                     alt="Photo of a Shiba Inu">
-                <mat-card-content>
-                    <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
-                    </p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-button>LIKE</button>
-                    <button mat-button>SHARE</button>
-                </mat-card-actions>
-            </mat-card>
-            <!-- Card 3-->
-            <mat-card class="example-card">
-                <mat-card-header>
-                    <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title>Android</mat-card-title>
-                    <mat-card-subtitle>Welcome to Android Course</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image
-                     src="https://pngriver.com/wp-content/uploads/2018/04/Download-Android-PNG-Image-For-Designing-Projects.png"
-                     alt="Photo of a Shiba Inu">
-                <mat-card-content>
-                    <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
-                    </p>
+                    <p>{{course.courseSecondDescription}}</p>
                 </mat-card-content>
                 <mat-card-actions>
                     <button mat-button>LIKE</button>
@@ -69,5 +19,8 @@
                 </mat-card-actions>
             </mat-card>
         </div>
+    </div>
+    <div class="mat-fab-button">
+        <button mat-fab color="primary" (click)="createCourse()"> + </button>
     </div>
 </div>

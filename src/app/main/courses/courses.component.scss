@@ -7,21 +7,20 @@
     background-size: cover;
 }
 
-.cards {
-    display: flex;
-    align-items: stretch;
-}
-.example-card {
+.example-card > div {
     margin: 10px;
     border: 1px solid #ccc;
-    box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
 }
+
 .example-card img {
     max-width: 100%;
 }
+
 .example-card .text {
     padding: 0 20px 20px;
 }
+
 .example-card .text > button {
     background: gray;
     border: 0;
@@ -30,10 +29,30 @@
     width: 100%;
 }
 
-#course{
-    display: flex;
-    margin: auto 10px;
+.flex-container {
     padding: 10px;
-    float: left;
-    flex-direction: row;
+    margin: 0;
+    list-style: none;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+
+.course {
+    margin: 10px;
+    padding: 10px;
+}
+
+.mat-fab-button {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 60px;
 }

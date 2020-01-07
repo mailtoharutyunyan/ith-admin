@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -18,15 +18,17 @@ import { fuseConfig } from 'app/fuse-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
-import { RegisterComponent } from './main/register/register.component';
-import { RegisterModule } from './main/register/register.module';
-import { LoginModule } from './main/login/login.module';
+import { RegisterComponent } from './main/auth/register/register.component';
+import { RegisterModule } from './main/auth/register/register.module';
+import { LoginModule } from './main/auth/login/login.module';
 import { CoursesModule } from './main/courses/courses.module';
+import { ErrorInterceptor } from './main/auth/helpers/error-inteceptor';
+import { JwtInterceptor } from './main/auth/helpers/jwt-interceptor';
 
 const appRoutes: Routes = [
     {
         path: '**',
-        redirectTo: 'sample'
+        redirectTo: 'auth/login'
     },
     {
         path: '',
@@ -73,6 +75,10 @@ const appRoutes: Routes = [
     ],
     bootstrap: [
         AppComponent
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     ]
 })
 export class AppModule {
